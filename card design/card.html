@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Digital Business Card</title>
+  <link rel="icon" href="img/coder.jpeg">
+  <link rel="stylesheet" href="style.css"/>
+  <style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card-container {
+  perspective: 1200px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  width: 700px;
+  max-width: 95%;
+  display: flex;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  transition: transform 0.5s;
+}
+
+.card:hover {
+  transform: rotateY(5deg);
+}
+
+.left-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 25px;
+  border-right: 1px solid #ccc;
+}
+
+.logo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+}
+
+.name-title {
+  margin-top: 20px;
+  text-align: center;
+  color: white;
+}
+
+.name-title h1 {
+  font-size: 28px;
+}
+
+.name-title p {
+  font-size: 16px;
+  font-weight: 400;
+  color: #e0e0e0;
+}
+
+.right-section {
+  flex: 2;
+  padding-left: 25px;
+  color: white;
+}
+
+.contact-info p {
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+.social-icons {
+  margin-top: 20px;
+}
+
+.social-icons a {
+  margin-right: 15px;
+  transition: transform 0.3s;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+}
+
+.social-icons img {
+  width: 30px;
+  height: 30px;
+}
+</style>
+</head>
+<body>
+  <div class="card-container">
+    <div class="card">
+      <div class="left-section">
+        <img src="img/coder.jpeg" alt="Logo" class="logo"/>
+        <div class="name-title">
+          <h1>Vijay Kumar chaudhary</h1>
+          <p>Full Stack Developer</p>
+        </div>
+      </div>
+      <div class="right-section">
+        <div class="contact-info">
+          <p><strong>Email:</strong><a href="https://www.google.com/search?client=firefox-b-e&channel=entpr&q=car" style="color: red;">vkc80905@gmail.com</a> </p>
+          <p><strong>Phone:</strong> <a href="https://www.google.com/search?client=firefox-b-e&channel=entpr&q=dial+pad"  style="color: red;">+91-8429741136</a></p>
+          <p><strong>Website:</strong> <a href="https://www.google.com/search?client=firefox-b-e&channel=entpr&q=gmail" style="color: red;">www.vijaycodes.dev</a></p>
+          <p><strong>Location:</strong> Lucknow, India</p>
+        </div>
+        <div class="social-icons">
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733635.png" alt="LinkedIn"/></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub"/></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter"/></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

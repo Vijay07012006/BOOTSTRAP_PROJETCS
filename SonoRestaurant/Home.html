@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sono | Japanese Restaurant Brisbane Portside</title>
+
+    <link rel="shortcut icon" href="./images/tabIcon.png" type="image/x-icon">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+    <!-- Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
+
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* ===== HERO CAROUSEL ===== */
+        .hero-carousel img {
+            height: 100vh;
+            object-fit: cover;
+        }
+
+        /* ===== NAVBAR OVERLAY ===== */
+        .navbar-overlay {
+            position: absolute;
+            top: 40px;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .dropdown-menu {
+            background: rgba(0, 0, 0, 0.75);
+            border: none;
+        }
+
+        .dropdown-item {
+            color: #fff;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* LOGO FIX */
+        .imgicon img {
+            transform: translateY(-20px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= WRAPPER ================= -->
+    <div class="container-fluid position-relative">
+        <div class="row">
+            <div class="col-sm-12 p-0">
+
+                <!-- ================= NAVBAR ================= -->
+                <div class="navbar-overlay">
+                    <nav class="navbar navbar-expand-lg navbar-dark justify-content-center">
+                        <div class="container-fluid">
+
+                            <!-- Brand (Mobile only) -->
+                            <a class="navbar-brand d-lg-none text-white" href="#">Navbar</a>
+
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarNavDropdown">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+
+                            <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+                                <ul class="navbar-nav gap-3 align-items-center">
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Reservation</a>
+                                    </li>
+
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                            Menus
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">Action</a></li>
+                                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                            Restaurant
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">Action</a></li>
+                                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Events</a>
+                                    </li>
+
+                                    <!-- Center Logo -->
+                                    <li class="nav-item imgicon">
+                                        <a class="nav-link" href="#">
+                                            <img src="./images/tabIcon.png" height="100" width="90" alt="">
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Sono Sakuru</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Gift Cards</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Contact</a>
+                                    </li>
+
+                                    <!-- Phone (Desktop only) -->
+                                    <li class="nav-item d-none d-lg-block">
+                                        <a class="nav-link" style="color: goldenrod;" href="#">
+                                            07 3268 6655
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+
+                <!-- ================= HERO CAROUSEL ================= -->
+                <div id="carouselExampleFade" class="carousel slide carousel-fade hero-carousel">
+                    <div class="carousel-inner">
+
+                        <div class="carousel-item active">
+                            <img src="./images/home-slide-1.jpg" class="d-block w-100" alt="">
+
+                            <div>
+                                
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <img src="./images/Tempura-Sono-Restaurant.jpg" class="d-block w-100" alt="">
+                        </div>
+
+                        <div class="carousel-item">
+                            <img src="./images/home-slide-3.jpg" class="d-block w-100" alt="">
+                        </div>
+
+                    </div>
+
+                    <button class="carousel-control-prev" type="button"
+                        data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+
+                    <button class="carousel-control-next" type="button"
+                        data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= SCRIPTS ================= -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="./js/script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Advanced Car Driving Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --game-width: 320px;
+      --game-height: 600px;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #222, #050505);
+      color: #fff;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    h1 {
+      font-size: 1.7rem;
+    }
+
+    /* Game shell */
+    #gameWrapper {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    #gameArea {
+      position: relative;
+      width: var(--game-width);
+      height: var(--game-height);
+      overflow: hidden;
+      margin: 0 auto;
+      border-radius: 16px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.8);
+      background-color: #222;
+      background-image:
+        linear-gradient(#3a3a3a 0, #3a3a3a 100%),
+        repeating-linear-gradient(
+          to bottom,
+          transparent 0,
+          transparent 30px,
+          #fdfdfd 30px,
+          #fdfdfd 40px
+        );
+      background-size: 100% 100%, 6px 40px;
+      background-position: center center, center 0;
+      background-repeat: no-repeat;
+    }
+
+    /* Player car */
+    #car {
+      position: absolute;
+      bottom: 25px;
+      left: 50%;
+      width: 5px;
+      height: 40px;
+      transform: translateX(-50%);
+      background: linear-gradient(to bottom, #ff5252, #b71c1c);
+      border-radius: 12px;
+      border: 2px solid #fff;
+      box-shadow: 0 0 14px rgba(255,80,80,0.9);
+    }
+
+    #car::before,
+    #car::after {
+      content: "";
+      position: absolute;
+      width: 5px;
+      height: 18px;
+      background: #111;
+      border-radius: 3px;
+      top: 8px;
+    }
+    #car::before { left: 6px; }
+    #car::after  { right: 6px; }
+
+    /* Enemy car */
+    .enemy {
+      position: absolute;
+      width: 20px;
+      height: 40px;
+      background: linear-gradient(to bottom, #00bcd4, #006064);
+      border-radius: 12px;
+      border: 2px solid #fff;
+      box-shadow: 0 0 12px rgba(0,188,212,0.9);
+    }
+
+    /* Coin */
+    .coin {
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #fff59d, #fdd835);
+      box-shadow: 0 0 10px rgba(255,235,59,0.9);
+      border: 2px solid #fbc02d;
+    }
+
+    /* HUD */
+    #hud {
+      font-size: 0.85rem;
+    }
+    #hud span.value {
+      font-weight: 600;
+    }
+
+    /* Overlays */
+    #startOverlay,
+    #gameOverOverlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top, rgba(0,0,0,0.9), rgba(0,0,0,0.95));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 1rem;
+      z-index: 10;
+    }
+
+    #gameOverOverlay {
+      display: none;
+    }
+
+    /* Touch controls */
+    #touchControls {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+
+    #touchControls button {
+      flex: 1;
+      user-select: none;
+    }
+
+    @media (max-width: 400px) {
+      #gameArea {
+        transform: scale(0.9);
+        transform-origin: top center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container py-4">
+    <div id="gameWrapper">
+      <h1 class="text-center mb-3">Advanced Car Driving 🚗</h1>
+
+      <!-- Top controls -->
+      <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+        <div class="d-flex align-items-center gap-2">
+          <label for="difficulty" class="form-label mb-0 small">Difficulty</label>
+          <select id="difficulty" class="form-select form-select-sm" style="width: 110px;">
+            <option value="easy">Easy</option>
+            <option value="medium" selected>Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+        </div>
+
+        <div class="d-flex gap-2">
+          <button id="btnStart" class="btn btn-success btn-sm">Start</button>
+          <button id="btnPause" class="btn btn-warning btn-sm" disabled>Pause</button>
+          <button id="btnReset" class="btn btn-outline-light btn-sm" disabled>Reset</button>
+        </div>
+      </div>
+
+      <!-- HUD -->
+      <div id="hud" class="mb-2 px-2 py-1 rounded bg-dark bg-opacity-50">
+        <div class="d-flex justify-content-between">
+          <span>Score: <span class="value" id="score">0</span></span>
+          <span>Distance: <span class="value" id="distance">0</span> m</span>
+        </div>
+        <div class="d-flex justify-content-between">
+          <span>Speed: <span class="value" id="speed">0</span> km/h</span>
+          <span>Coins: <span class="value" id="coins">0</span> | Best: <span class="value" id="bestScore">0</span></span>
+        </div>
+      </div>
+
+      <!-- Game area -->
+      <div id="gameArea">
+        <div id="car"></div>
+
+        <!-- Start overlay -->
+        <div id="startOverlay">
+          <h3 class="mb-2">Ready to Drive?</h3>
+          <p class="small mb-2">
+            Controls: ← / → / A / D to steer, ↑ / ↓ to control speed, P to pause.
+          </p>
+          <p class="small mb-3">
+            Avoid enemy cars, collect coins, go as far as you can!
+          </p>
+          <button class="btn btn-primary btn-sm" id="startOverlayBtn">Start Game</button>
+        </div>
+
+        <!-- Game over overlay -->
+        <div id="gameOverOverlay">
+          <h3 class="mb-2">Game Over!</h3>
+          <p class="mb-1 small">Score: <span id="finalScore">0</span></p>
+          <p class="mb-3 small">Distance: <span id="finalDistance">0</span> m | Coins: <span id="finalCoins">0</span></p>
+          <button class="btn btn-light btn-sm me-2" id="btnPlayAgain">Play Again</button>
+          <button class="btn btn-outline-light btn-sm" id="btnCloseOverlay">Close</button>
+        </div>
+      </div>
+
+      <!-- Touch controls (for mobile) -->
+      <div id="touchControls">
+        <button class="btn btn-outline-light btn-sm" id="btnLeft">◀ Left</button>
+        <button class="btn btn-outline-light btn-sm" id="btnSlow">▼ Slow</button>
+        <button class="btn btn-outline-light btn-sm" id="btnFast">▲ Fast</button>
+        <button class="btn btn-outline-light btn-sm" id="btnRight">Right ▶</button>
+      </div>
+
+      <p class="small text-muted mt-2 mb-0 text-center">
+        Tip: High difficulty = more enemies + higher speed. Play with headphones for better feel (you can add sounds later).
+      </p>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS (for future, if you want modals etc.) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    const gameArea   = document.getElementById('gameArea');
+    const car        = document.getElementById('car');
+    const scoreEl    = document.getElementById('score');
+    const distanceEl = document.getElementById('distance');
+    const speedEl    = document.getElementById('speed');
+    const coinsEl    = document.getElementById('coins');
+    const bestScoreEl= document.getElementById('bestScore');
+
+    const btnStart   = document.getElementById('btnStart');
+    const btnPause   = document.getElementById('btnPause');
+    const btnReset   = document.getElementById('btnReset');
+    const difficultySelect = document.getElementById('difficulty');
+
+    const startOverlay      = document.getElementById('startOverlay');
+    const startOverlayBtn   = document.getElementById('startOverlayBtn');
+    const gameOverOverlay   = document.getElementById('gameOverOverlay');
+    const btnPlayAgain      = document.getElementById('btnPlayAgain');
+    const btnCloseOverlay   = document.getElementById('btnCloseOverlay');
+    const finalScoreEl      = document.getElementById('finalScore');
+    const finalDistanceEl   = document.getElementById('finalDistance');
+    const finalCoinsEl      = document.getElementById('finalCoins');
+
+    const btnLeft  = document.getElementById('btnLeft');
+    const btnRight = document.getElementById('btnRight');
+    const btnFast  = document.getElementById('btnFast');
+    const btnSlow  = document.getElementById('btnSlow');
+
+    const gameWidth  = 320;
+    const gameHeight = 600;
+
+    // Car position
+    let carX = gameWidth / 2 - 25; // car width 50
+    const carY = gameHeight - 110; // fixed bottom
+
+    // Inputs
+    let leftPressed = false;
+    let rightPressed = false;
+    let upPressed = false;
+    let downPressed = false;
+
+    // Game state
+    let enemies = [];
+    let coinsArr = [];
+
+    let currentSpeed = 0;     // "km/h"-like value (visual)
+    let baseSpeed = 4;        // base world speed (for movement)
+    let maxSpeed = 11;
+    let acceleration = 0.015;
+
+    let score = 0;
+    let distance = 0;
+    let coins = 0;
+    let bestScore = parseInt(localStorage.getItem('advanced_car_best_score') || '0', 10);
+
+    let spawnEnemyTimer = 0;
+    let spawnEnemyInterval = 900; // ms
+    let spawnCoinTimer = 0;
+    let spawnCoinInterval = 1400; // ms
+
+    let roadOffset = 0; // road bg scroll
+
+    let lastTime = 0;
+    let gameRunning = false;
+    let isPaused = false;
+
+    bestScoreEl.textContent = bestScore;
+
+    function setDifficulty(diff) {
+      if (diff === 'easy') {
+        baseSpeed = 3.2;
+        maxSpeed = 9;
+        spawnEnemyInterval = 1000;
+        spawnCoinInterval = 1500;
+      } else if (diff === 'medium') {
+        baseSpeed = 4;
+        maxSpeed = 11;
+        spawnEnemyInterval = 900;
+        spawnCoinInterval = 1400;
+      } else {
+        baseSpeed = 4.8;
+        maxSpeed = 13;
+        spawnEnemyInterval = 750;
+        spawnCoinInterval = 1300;
+      }
+    }
+    setDifficulty(difficultySelect.value);
+
+    function resetGame() {
+      carX = gameWidth / 2 - 25;
+      car.style.left = carX + 'px';
+      car.style.bottom = '25px';
+
+      enemies.forEach(e => gameArea.removeChild(e.el));
+      coinsArr.forEach(c => gameArea.removeChild(c.el));
+      enemies = [];
+      coinsArr = [];
+
+      currentSpeed = 0;
+      score = 0;
+      distance = 0;
+      coins = 0;
+      spawnEnemyTimer = 0;
+      spawnCoinTimer = 0;
+      roadOffset = 0;
+      lastTime = 0;
+
+      updateHUD();
+    }
+
+    function startGame() {
+      if (gameRunning) return;
+      resetGame();
+      gameRunning = true;
+      isPaused = false;
+
+      startOverlay.style.display = 'none';
+      gameOverOverlay.style.display = 'none';
+
+      btnStart.disabled = true;
+      btnPause.disabled = false;
+      btnReset.disabled = false;
+
+      // start with some enemies & coins
+      for (let i = 0; i < 3; i++) {
+        createEnemy(true);
+      }
+      for (let i = 0; i < 2; i++) {
+        createCoin(true);
+      }
+
+      window.requestAnimationFrame(gameLoop);
+    }
+
+    function pauseGame() {
+      if (!gameRunning) return;
+      isPaused = !isPaused;
+      btnPause.textContent = isPaused ? 'Resume' : 'Pause';
+    }
+
+    function endGame() {
+      gameRunning = false;
+      isPaused = false;
+      btnStart.disabled = false;
+      btnPause.disabled = true;
+      btnReset.disabled = false;
+      btnPause.textContent = 'Pause';
+
+      finalScoreEl.textContent = score;
+      finalDistanceEl.textContent = distance.toFixed(0);
+      finalCoinsEl.textContent = coins;
+      gameOverOverlay.style.display = 'flex';
+
+      if (score > bestScore) {
+        bestScore = score;
+        localStorage.setItem('advanced_car_best_score', bestScore);
+        bestScoreEl.textContent = bestScore;
+      }
+    }
+
+    function updateHUD() {
+      scoreEl.textContent = score;
+      distanceEl.textContent = distance.toFixed(0);
+      speedEl.textContent = (currentSpeed * 10).toFixed(0); // fake km/h
+      coinsEl.textContent = coins;
+      bestScoreEl.textContent = bestScore;
+    }
+
+    function createEnemy(initial = false) {
+      const enemy = document.createElement('div');
+      enemy.classList.add('enemy');
+
+      const lanePositions = [40, 135, 230];
+      const laneIdx = Math.floor(Math.random() * lanePositions.length);
+      const x = lanePositions[laneIdx];
+
+      const y = initial ? -Math.random() * gameHeight : -120;
+
+      enemy.style.left = x + 'px';
+      enemy.style.top = y + 'px';
+
+      gameArea.appendChild(enemy);
+
+      enemies.push({
+        el: enemy,
+        x,
+        y,
+        extraSpeed: (Math.random() * 1.5) // thoda random speed
+      });
+    }
+
+    function createCoin(initial = false) {
+      const coin = document.createElement('div');
+      coin.classList.add('coin');
+
+      const lanePositions = [55, 150, 245]; // thoda adjust for center
+      const laneIdx = Math.floor(Math.random() * lanePositions.length);
+      const x = lanePositions[laneIdx];
+
+      const y = initial ? -Math.random() * gameHeight : -50;
+
+      coin.style.left = x + 'px';
+      coin.style.top = y + 'px';
+
+      gameArea.appendChild(coin);
+
+      coinsArr.push({
+        el: coin,
+        x,
+        y
+      });
+    }
+
+    function isColliding(rect1, rect2) {
+      return !(
+        rect1.bottom < rect2.top ||
+        rect1.top > rect2.bottom ||
+        rect1.right < rect2.left ||
+        rect1.left > rect2.right
+      );
+    }
+
+    function gameLoop(timestamp) {
+      if (!gameRunning) return;
+
+      const delta = lastTime ? (timestamp - lastTime) : 16;
+      lastTime = timestamp;
+
+      if (isPaused) {
+        window.requestAnimationFrame(gameLoop);
+        return;
+      }
+
+      // Car horizontal movement
+      const carMoveSpeed = 0.35 * delta; // px per ms
+      if (leftPressed) {
+        carX -= carMoveSpeed;
+      }
+      if (rightPressed) {
+        carX += carMoveSpeed;
+      }
+
+      if (carX < 10) carX = 10;
+      if (carX > gameWidth - 10 - 50) carX = gameWidth - 10 - 50;
+      car.style.left = carX + 'px';
+
+      // Speed control
+      const speedChange = acceleration * delta;
+      if (upPressed) {
+        currentSpeed += speedChange;
+      } else if (downPressed) {
+        currentSpeed -= speedChange * 1.2;
+      } else {
+        // natural slow down
+        currentSpeed -= speedChange * 0.4;
+      }
+
+      const minSpeed = baseSpeed;
+      if (currentSpeed < minSpeed) currentSpeed = minSpeed;
+      if (currentSpeed > maxSpeed) currentSpeed = maxSpeed;
+
+      // Distance & score (based on speed + time)
+      const pixelsPerMs = (currentSpeed / 5); 
+      distance += pixelsPerMs * delta * 0.04; // tune factor
+      score = Math.floor(distance * 1.2 + coins * 10);
+
+      // Road scroll
+      roadOffset += pixelsPerMs * delta * 0.2;
+      if (roadOffset > 40) roadOffset = 0;
+      gameArea.style.backgroundPosition = `center center, center ${roadOffset}px`;
+
+      // Move enemies
+      enemies.forEach(enemy => {
+        const move = (pixelsPerMs + 2 + enemy.extraSpeed) * (delta * 0.06);
+        enemy.y += move;
+        enemy.el.style.top = enemy.y + 'px';
+      });
+
+      // Move coins
+      coinsArr.forEach(coin => {
+        const move = (pixelsPerMs + 2) * (delta * 0.06);
+        coin.y += move;
+        coin.el.style.top = coin.y + 'px';
+      });
+
+      // Spawn timers
+      spawnEnemyTimer += delta;
+      spawnCoinTimer += delta;
+
+      if (spawnEnemyTimer >= spawnEnemyInterval) {
+        spawnEnemyTimer = 0;
+        createEnemy(false);
+      }
+
+      if (spawnCoinTimer >= spawnCoinInterval) {
+        spawnCoinTimer = 0;
+        createCoin(false);
+      }
+
+      // Remove off-screen enemies and coins
+      enemies = enemies.filter(e => {
+        if (e.y > gameHeight + 150) {
+          gameArea.removeChild(e.el);
+          return false;
+        }
+        return true;
+      });
+
+      coinsArr = coinsArr.filter(c => {
+        if (c.y > gameHeight + 60) {
+          gameArea.removeChild(c.el);
+          return false;
+        }
+        return true;
+      });
+
+      // Collision detection
+      const carRect = car.getBoundingClientRect();
+
+      for (let enemy of enemies) {
+        const rect = enemy.el.getBoundingClientRect();
+        if (isColliding(carRect, rect)) {
+          endGame();
+          updateHUD();
+          return;
+        }
+      }
+
+      for (let i = coinsArr.length - 1; i >= 0; i--) {
+        const coinObj = coinsArr[i];
+        const rect = coinObj.el.getBoundingClientRect();
+        if (isColliding(carRect, rect)) {
+          coins++;
+          gameArea.removeChild(coinObj.el);
+          coinsArr.splice(i, 1);
+        }
+      }
+
+      updateHUD();
+      window.requestAnimationFrame(gameLoop);
+    }
+
+    // Keyboard handling
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
+        leftPressed = true;
+      }
+      if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') {
+        rightPressed = true;
+      }
+      if (e.key === 'ArrowUp' || e.key === 'w' || e.key === 'W') {
+        upPressed = true;
+      }
+      if (e.key === 'ArrowDown' || e.key === 's' || e.key === 'S') {
+        downPressed = true;
+      }
+      if (e.key === 'p' || e.key === 'P') {
+        pauseGame();
+      }
+    });
+
+    window.addEventListener('keyup', (e) => {
+      if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
+        leftPressed = false;
+      }
+      if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') {
+        rightPressed = false;
+      }
+      if (e.key === 'ArrowUp' || e.key === 'w' || e.key === 'W') {
+        upPressed = false;
+      }
+      if (e.key === 'ArrowDown' || e.key === 's' || e.key === 'S') {
+        downPressed = false;
+      }
+    });
+
+    // Buttons
+    btnStart.addEventListener('click', startGame);
+    btnPause.addEventListener('click', pauseGame);
+    btnReset.addEventListener('click', () => {
+      resetGame();
+      gameOverOverlay.style.display = 'none';
+      startOverlay.style.display = 'flex';
+      btnStart.disabled = false;
+      btnPause.disabled = true;
+      btnReset.disabled = true;
+      btnPause.textContent = 'Pause';
+    });
+
+    startOverlayBtn.addEventListener('click', startGame);
+    btnPlayAgain.addEventListener('click', startGame);
+    btnCloseOverlay.addEventListener('click', () => {
+      gameOverOverlay.style.display = 'none';
+    });
+
+    difficultySelect.addEventListener('change', () => {
+      setDifficulty(difficultySelect.value);
+    });
+
+    // Touch controls (mobile)
+    function holdButton(el, onStart, onEnd) {
+      let holding = false;
+      const addEvents = (downEvent, upEvent, leaveEvent) => {
+        el.addEventListener(downEvent, (e) => {
+          e.preventDefault();
+          holding = true;
+          onStart();
+        });
+        el.addEventListener(upEvent, (e) => {
+          e.preventDefault();
+          holding = false;
+          onEnd();
+        });
+        if (leaveEvent) {
+          el.addEventListener(leaveEvent, (e) => {
+            e.preventDefault();
+            if (holding) {
+              holding = false;
+              onEnd();
+            }
+          });
+        }
+      };
+
+      addEvents('mousedown', 'mouseup', 'mouseleave');
+      addEvents('touchstart', 'touchend', 'touchcancel');
+    }
+
+    holdButton(btnLeft, () => { leftPressed = true; }, () => { leftPressed = false; });
+    holdButton(btnRight, () => { rightPressed = true; }, () => { rightPressed = false; });
+    holdButton(btnFast, () => { upPressed = true; }, () => { upPressed = false; });
+    holdButton(btnSlow, () => { downPressed = true; }, () => { downPressed = false; });
+
+  </script>
+</body>
+</html>

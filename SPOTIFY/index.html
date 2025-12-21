@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="./images/spotify tab logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+
+</head>
+
+<body>
+    <div class="container-fluid" style="box-sizing: border-box; background-color: black;">
+        <!-- navbar  -->
+        <div class="row py-3 px-2">
+            <div class="col-sm-1">
+                <i class="fa-brands fa-spotify fa-beat fs-4" style="color: #ffffff;"></i>
+            </div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-sm-1">
+                        <span><i class="fa-solid fa-house fs-5"
+                                style="color: #ffffff; background-color: grey;height: 35px;width: 35px; border-radius: 50%;padding-top: 6px;"></i></span>
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="input-group">
+                            <span class=" input-group-text  bg-dark" id="basic-addon1"><i
+                                    class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></span>
+                            <input type="text" class="form-control text-light bg-dark" placeholder="Username"
+                                aria-label="Username" aria-describedby="basic-addon1">
+                            <span class="input-group-text  bg-dark" id="basic-addon1"><i
+                                    class="fa-solid fa-window-restore" style="color: #ffffff;"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 text-end pt-2">
+                <a href="#" class="fw-bold text-decoration-none text-white"
+                    style="opacity: 0.6;font-size: 13px;">Premium</a>
+                <a href="#" class="fw-bold text-decoration-none text-white px-2"
+                    style="opacity: 0.6;font-size: 13px;">Support</a>
+                <a href="#" class="fw-bold text-decoration-none text-white"
+                    style="opacity: 0.6;font-size: 13px;">Download</a>
+                <span class="text-white px-3"> | </span>
+                <a href="#" class="text-decoration-none"><i class="fa-solid fa-circle-down"
+                        style="color: #ffffff;"></i><span class="text-white fw-bold ps-2"
+                        style="opacity: 0.6;font-size: 13px;">Install App</span></a>
+                <a href="#" class="fw-bold text-decoration-none text-white ps-3 "
+                    style="opacity: 0.6;font-size: 13px;">Sign up</a>
+            </div>
+            <div class="col-sm-1">
+
+                <a href="Login.html" class=""><button class="bg-light border-0 rounded-pill "
+                        style="height: 40px; width: 100%;">Log in</button></a>
+            </div>
+        </div>
+        <!-- library list  -->
+        <div class="row">
+            <div class="col-sm-3 m-2 p-4 text-white"
+                style="height: 80vh;border-radius: 10px;background-color: rgb(21, 20, 20); position: relative;">
+                <div class="row ">
+                    <div class="col-sm-6">
+                        <span class="fw-bold text-start" style="font-size: 13px;">Your Library</span>
+
+                    </div>
+                    <div class="col-sm-6 text-end">
+                        <button type="button" class="btn btn-dark" data-bs-toggle="tooltip" data-bs-placement="top"
+                            data-bs-custom-class="custom-tooltip"
+                            data-bs-title="This top tooltip is themed via CSS variables.">
+                            <i class="fa-solid fa-plus fa-lg" style="color: #ffffff;opacity: 0.7;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="row rounded-3 mt-3" style="background-color: rgb(38, 38, 38);">
+                    <div class="col-sm-6 py-3 px-3">
+                        <span class="fw-bold" style="font-size: 13px;">Create your first playlist</span>
+                        <br>
+                        <span class="" style="font-size: 12px;opacity: 0.9;">It's easy,we'll help you</span>
+
+                        <div class="row py-2">
+                            <a href="#" class=""><button class="bg-light border-0 rounded-pill fw-bold"
+                                    style="height: 30px; width: 70%;font-size: 12px;">Create Playlist</button></a>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6"></div>
+                </div>
+
+                <div class="row rounded-3 mt-3" style="background-color: rgb(38, 38, 38);">
+                    <div class="col-sm-12 py-3 px-3">
+                        <span class="fw-bold" style="font-size: 13px;">Let's find some podcasts to follow</span>
+                        <br>
+                        <span class="" style="font-size: 12px;opacity: 0.9;">We'll keep you updated on new
+                            episodes</span>
+
+                        <div class="row py-2">
+                            <a href="#" class=""><button class="bg-light border-0 rounded-pill fw-bold px-1"
+                                    style="height: 30px; width: 35%;font-size: 12px;">Browser podcasts</button></a>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12" style="height: 130px;"></div>
+                </div>
+
+                <div class="row">
+                    <span>
+                        <span class="pe-2">
+                            <a href="#" class="text-decoration-none text-white"
+                                style="font-size: 10px;opacity: 0.7;">Legal</a>
+                        </span>
+                        <span>
+                            <a href="#" class="text-decoration-none text-white px-2"
+                                style="font-size: 10px;opacity: 0.7;">Safety & privacy Center</a>
+                        </span>
+                        <span class="pe-2">
+                            <a href="#" class="text-decoration-none text-white"
+                                style="font-size: 10px;opacity: 0.7;">Privacy policy</a>
+                        </span>
+                        <span class="">
+                            <a href="#" class="text-decoration-none text-white"
+                                style="font-size: 10px;opacity: 0.7;">Cookies</a>
+                        </span>
+                        <br>
+                        <span class="pe-2">
+                            <a href="#" class="text-decoration-none text-white"
+                                style="font-size: 10px;opacity: 0.7;">About Ads</a>
+                        </span>
+                        <span class="pe-2">
+                            <a href="#" class="text-decoration-none text-white"
+                                style="font-size: 10px;opacity: 0.7;">Accessibilty</a>
+                        </span>
+                        <br>
+                        <span class="pe-2">
+                            <a href="#" class="text-decoration-none text-white" style="font-size: 12px;">Cookies</a>
+                        </span>
+                    </span>
+                </div>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <a href="#" class="text-decoration-none "><button
+                                class="rounded-pill bg-dark text-white border-1 px-3 mt-4">
+                                <i class="fa-solid fa-globe pe-2" style="color: #ffffff;"></i> <span
+                                    style="font-size: 14px;display: inline-block;" class="fw-bold pb-1">
+                                    English
+                                </span>
+                            </button></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8 pb-3"
+                style="height: 80vh;width: 73vw; border-radius: 10px;background-color: rgb(21, 20, 20);position: relative;padding: 10px 53px 33px 33px;left: 0px;overflow-y: auto;">
+                <div class="row pt-2 pb-3">
+                    <span>
+                        <span>
+                            <a href="#" class="text-decoration-none"><button class="btn btn-light rounded-5"
+                                    style="font-size: 13px;">All</button></a>
+                        </span>
+                        <span>
+                            <a href="#" class="text-decoration-none"><button class="btn bg-dark text-light rounded-5"
+                                    style="font-size: 13px;">Music</button></a>
+                        </span>
+                        <span>
+                            <a href="#" class="text-decoration-none"><button class="btn btn-dark text-white rounded-5"
+                                    style="font-size: 13px;">Podcase</button></a>
+                        </span>
+                    </span>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 text-start">
+                        <h4 class="text-white fw-bold">
+                            Popular artists
+                        </h4>
+                    </div>
+                    <div class="col-sm-6 text-end">
+                        <a href="#" class="text-white fw-bold text" style="font-size: 13px; opacity: 0.6;">Show all</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <swiper-container class="mySwiper" pagination="true" pagination-clickable="true"
+                        slides-per-view="7.2" space-between="50" free-mode="true" autoplay="false">
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Arjit singh.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:50%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 13px;"> Arjit singh</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/honey singh.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:50%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 13px;">Yo Yo Honey singh</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/udit narayan.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:50%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 13px;"> Udit Narayan</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/atif aslam.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:50%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;"> Atif Aslam</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/A.R. Rahman.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:50%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">A.R. Rahman</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Vishal Shekar.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:50%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Vishal Shekhar</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Anirudh Ravichandra.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:50%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Anirudh Ravichander</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Pritam.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:50%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Pritam</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Shankar.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:50%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Shankar-Eshaan-Loy</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/sachin jigra.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:50%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Sachin-Jigar</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                    </swiper-container>
+                </div>
+
+                <div class="row">
+                    <h4 class="text-white fw-bold">
+                        Popular radio
+                    </h4>
+                </div>
+                <div class="row">
+                    <swiper-container class="mySwiper" pagination="true" pagination-clickable="true"
+                        slides-per-view="7.2" space-between="50" free-mode="true" autoplay="false">
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Aashiqui 2.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 13px;"> Aashiqui 2</span>
+                                    <span class="text-white" style="font-size: 11px;opacity: 0.6;">Mithun,Ankit
+                                        Tiwari,Jeet Gannguli</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/yeh jaawaani .jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 13px;">Yeh Jawani hai
+                                        Dewaani</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Pritam</span>
+                                </div>`
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/sanam teri kasam.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 13px;"> Sanam Teri Kasam
+                                        (Origninal Motion)</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/atif aslam.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;"> Atif Aslam</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/A.R. Rahman.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">A.R. Rahman</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Vishal Shekar.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Vishal Shekhar</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Anirudh Ravichandra.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Anirudh Ravichander</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Pritam.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Pritam</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Shankar.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Shankar-Eshaan-Loy</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/sachin jigra.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Sachin-Jigar</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                    </swiper-container>
+                </div>
+                <div class="row">
+                    <swiper-container class="mySwiper" pagination="true" pagination-clickable="true"
+                        slides-per-view="7.2" space-between="50" free-mode="true" autoplay="false">
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Arjit singh.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 13px;"> Arjit singh</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/honey singh.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 13px;">Yo Yo Honey singh</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/udit narayan.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 13px;"> Udit Narayan</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/atif aslam.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;"> Atif Aslam</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/A.R. Rahman.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">A.R. Rahman</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Vishal Shekar.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Vishal Shekhar</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Anirudh Ravichandra.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Anirudh Ravichander</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Pritam.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Pritam</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Shankar.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Shankar-Eshaan-Loy</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/sachin jigra.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Sachin-Jigar</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                    </swiper-container>
+                </div>
+                <div class="row">
+                    <swiper-container class="mySwiper" pagination="true" pagination-clickable="true"
+                        slides-per-view="7.2" space-between="50" free-mode="true" autoplay="false">
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Arjit singh.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 13px;"> Arjit singh</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/honey singh.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 13px;">Yo Yo Honey singh</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/udit narayan.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 13px;"> Udit Narayan</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/atif aslam.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;"> Atif Aslam</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/A.R. Rahman.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">A.R. Rahman</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Vishal Shekar.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Vishal Shekhar</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Anirudh Ravichandra.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Anirudh Ravichander</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Pritam.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Pritam</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Shankar.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Shankar-Eshaan-Loy</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/sachin jigra.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Sachin-Jigar</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                    </swiper-container>
+                </div>
+                <div class="row">
+                    <swiper-container class="mySwiper" pagination="true" pagination-clickable="true"
+                        slides-per-view="7.2" space-between="50" free-mode="true" autoplay="false">
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Arjit singh.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 13px;"> Arjit singh</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/honey singh.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 13px;">Yo Yo Honey singh</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/udit narayan.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 13px;"> Udit Narayan</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/atif aslam.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;"> Atif Aslam</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/A.R. Rahman.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">A.R. Rahman</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Vishal Shekar.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Vishal Shekhar</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Anirudh Ravichandra.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Anirudh Ravichander</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Pritam.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Pritam</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Shankar.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Shankar-Eshaan-Loy</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/sachin jigra.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Sachin-Jigar</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                    </swiper-container>
+                </div>
+                <div class="row">
+                    <swiper-container class="mySwiper" pagination="true" pagination-clickable="true"
+                        slides-per-view="7.2" space-between="50" free-mode="true" autoplay="false">
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Arjit singh.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 13px;"> Arjit singh</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/honey singh.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 13px;">Yo Yo Honey singh</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/udit narayan.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 13px;"> Udit Narayan</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/atif aslam.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;"> Atif Aslam</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/A.R. Rahman.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">A.R. Rahman</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Vishal Shekar.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Vishal Shekhar</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Anirudh Ravichandra.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Anirudh Ravichander</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Pritam.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Pritam</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Shankar.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Shankar-Eshaan-Loy</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/sachin jigra.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Sachin-Jigar</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                    </swiper-container>
+                </div>
+                <div class="row">
+                    <swiper-container class="mySwiper" pagination="true" pagination-clickable="true"
+                        slides-per-view="7.2" space-between="50" free-mode="true" autoplay="false">
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Arjit singh.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 13px;"> Arjit singh</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/honey singh.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 13px;">Yo Yo Honey singh</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/udit narayan.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 13px;"> Udit Narayan</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/atif aslam.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;"> Atif Aslam</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/A.R. Rahman.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">A.R. Rahman</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Vishal Shekar.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Vishal Shekhar</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Anirudh Ravichandra.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Anirudh Ravichander</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Pritam.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Pritam</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/Shankar.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Shankar-Eshaan-Loy</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="row">
+                                <div class="">
+                                    <img src="./images/sachin jigra.jpeg" class="card-img-top" alt="..."
+                                        style="border-radius:5%;height: 140px;width: 140px;">
+                                </div>
+                                <div class="row">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">Sachin-Jigar</span>
+                                    <span class="text-white" style="font-size: 13px;opacity: 0.6;">Artist</span>
+                                </div>
+                            </div>
+                        </swiper-slide>
+                    </swiper-container>
+                </div>
+
+
+
+                <!-- footer start  -->
+
+                <div class="row my-5">
+                    <hr class="text-white pb-4">
+                    <div class="col-sm-2">
+                        <h6 class="fw-bold text-white" style="font-size: 15px;">Company</h6>
+                        <a href="#" class="text-white text-decoration-none"
+                            style="font-size: 15px;opacity: 0.6;">About</a>
+                        <br>
+                        <a href="#" class="text-white text-decoration-none"
+                            style="font-size: 15px;opacity: 0.6;">Jobs</a>
+                        <br>
+                        <a href="#" class="text-white text-decoration-none" style="font-size: 15px;opacity: 0.6;">For
+                            the record</a>
+
+                    </div>
+                    <div class="col-sm-2">
+                        <h6 class="fw-bold text-white" style="font-size: 15px;">Communities</h6>
+                        <a href="#" class="text-white text-decoration-none" style="font-size: 15px;opacity: 0.6;">For
+                            Artists</a>
+                        <br>
+                        <a href="#" class="text-white text-decoration-none"
+                            style="font-size: 15px;opacity: 0.6;">Developers</a>
+                        <br>
+                        <a href="#" class="text-white text-decoration-none"
+                            style="font-size: 15px;opacity: 0.6;">Advertising</a>
+                        <br>
+                        <a href="#" class="text-white text-decoration-none"
+                            style="font-size: 15px;opacity: 0.6;">Investors</a>
+                        <br>
+                        <a href="#" class="text-white text-decoration-none"
+                            style="font-size: 15px;opacity: 0.6;">Vendors</a>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <h6 class="fw-bold text-white" style="font-size: 15px;">Useful links</h6>
+                        <a href="#" class="text-white text-decoration-none"
+                            style="font-size: 15px;opacity: 0.6;">Support</a>
+                        <br>
+                        <a href="#" class="text-white text-decoration-none" style="font-size: 15px;opacity: 0.6;">Free
+                            Mobile App</a>
+                        <br>
+                        <a href="#" class="text-white text-decoration-none"
+                            style="font-size: 15px;opacity: 0.6;">Popular by Country</a>
+                        <br>
+                        <a href="#" class="text-white text-decoration-none" style="font-size: 15px;opacity: 0.6;">Import
+                            your music</a>
+                        <br>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <h6 class="fw-bold text-white" style="font-size: 15px;">Spotify Plans</h6>
+                        <a href="#" class="text-white text-decoration-none"
+                            style="font-size: 15px;opacity: 0.6;">Premium Individual</a>
+                        <br>
+                        <a href="#" class="text-white text-decoration-none"
+                            style="font-size: 15px;opacity: 0.6;">Premium Duo</a>
+                        <br>
+                        <a href="#" class="text-white text-decoration-none"
+                            style="font-size: 15px;opacity: 0.6;">Premium Family</a>
+                        <br>
+                        <a href="#" class="text-white text-decoration-none"
+                            style="font-size: 15px;opacity: 0.6;">Premium Student</a>
+
+                        <a href="#" class="text-white text-decoration-none"
+                            style="font-size: 15px;opacity: 0.6;">Premium Student</a>
+                        <br>
+                    </div>
+
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-2 text-end">
+                        <a href="#" class="text-decoration-none px-1">
+                            <i class="fa-brands fa-instagram"
+                                style="color: #ffffff;background-color: rgb(53, 51, 51); height: 30px;width: 30px;  border-radius: 50%;padding-top: 6px;"></i></a>
+                        <a href="#" class="text-decoration-none px-1">
+                            <i class="fa-brands fa-twitter"
+                                style="color: #ffffff;background-color: rgb(53, 51, 51); height: 30px;width: 30px;  border-radius: 50%;padding-top: 6px"></i>
+                        </a>
+                        <a href="#" class="text-decoration-none px-1">
+                            <i class="fa-brands fa-facebook"
+                                style="color: #ffffff;background-color: rgb(53, 51, 51); height: 30px;width: 30px;  border-radius: 50%;padding-top: 6px"></i>
+                        </a>
+                    </div>
+                    <hr class="text-white mt-4">
+                    <div class="row">
+                        <p class="text-white p-0 m-0" style="font-size: 12px;opacity: 0.7;">© 2025 Spotify AB</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="js/bootstrap.bundle.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-element-bundle.min.js"></script>
+
+</body>
+
+</html>

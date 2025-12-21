@@ -1,0 +1,213 @@
+body {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.font-sizex {
+  font-size: 12px;
+  color: aliceblue;
+}
+
+.backg1 {
+  background: linear-gradient(rgba(78, 76, 76, 0.5),
+      /* maroon color with opacity */
+      rgba(114, 109, 109, 0.5)),
+    url("../images/car.jpg");
+  /* background image */
+  background-size: cover;
+  /* image stretch */
+  background-position: center;
+  /* center alignment */
+  background-repeat: no-repeat;
+  /* no repeat */
+  color: white;
+  /* text color upar visible */
+  padding: 20px;
+  background-attachment: fixed;
+}
+
+.bg_gallery {
+  background:
+    url("../images/bg.jpg");
+  /* background image */
+  background-size: cover;
+  /* image stretch */
+  background-position: center;
+  /* center alignment */
+  background-repeat: no-repeat;
+  /* no repeat */
+  color: white;
+  /* text color upar visible */
+  padding: 20px;
+  background-attachment: fixed;
+  height: 70vh;
+  width: 100vw;
+}
+
+.chef_bg {
+  background: linear-gradient(rgba(68, 19, 19, 0.5),
+      /* maroon color with opacity */
+      rgba(58, 27, 27, 0.5)),
+    url("../images/chief.jpg");
+  /* background image */
+  background-size: cover;
+  /* image stretch */
+  background-position: center;
+  /* center alignment */
+  background-repeat: no-repeat;
+  /* no repeat */
+  color: white;
+  /* text color upar visible */
+  /* padding: 20px; */
+  background-attachment: fixed;
+  height: 70vh;
+  width: 50vw;
+}
+
+.champion_bg {
+  background: linear-gradient(rgba(11, 11, 11, 0.5),
+      /* maroon color with opacity */
+      rgba(8, 8, 8, 0.5)),
+    url("../images/chmpion.jpg");
+  /* background image */
+  background-size: cover;
+  /* image stretch */
+  background-position: center;
+  /* center alignment */
+  background-repeat: no-repeat;
+  /* no repeat */
+  color: white;
+  /* text color upar visible */
+  /* padding: 20px; */
+  background-attachment: fixed;
+  height: 70vh;
+  width: 50vw;
+}
+
+.resort_bg {
+  background: linear-gradient(rgba(11, 11, 11, 0.5),
+      /* maroon color with opacity */
+      rgba(8, 8, 8, 0.5)),
+    url("../images/p-1.jpg");
+  /* background image */
+  background-size: cover;
+  /* image stretch */
+  background-position: center;
+  /* center alignment */
+  background-repeat: no-repeat;
+  /* no repeat */
+  color: white;
+  /* text color upar visible */
+  /* padding: 20px; */
+  /* background-attachment: fixed; */
+  height: 100%;
+  width: 50vw;
+}
+
+.Dining_bg {
+  background: linear-gradient(rgba(11, 11, 11, 0.5),
+      /* maroon color with opacity */
+      rgba(8, 8, 8, 0.5)),
+    url("../images/p-4.jpg");
+  /* background image */
+  background-size: cover;
+  /* image stretch */
+  background-position: center;
+  /* center alignment */
+  background-repeat: no-repeat;
+  /* no repeat */
+  color: white;
+  /* text color upar visible */
+  /* padding: 20px; */
+  /* background-attachment: fixed; */
+  height: 100%;
+  width: 50vw;
+}
+
+.inner-header2 {
+  background:
+    url("../images/inner-header2.jpg");
+  /* background image */
+  background-size: cover;
+  /* image stretch */
+  background-position: center;
+  /* center alignment */
+  background-repeat: no-repeat;
+  /* no repeat */
+  color: white;
+  /* text color upar visible */
+  /* padding: 20px; */
+  /* background-attachment: fixed; */
+  height: 220px;
+  width: 100vw;
+}
+
+.img-holder {
+  background:
+    url("../images/bed\ and\ bedsheet.jpg");
+  /* background image */
+  background-size: cover;
+  /* image stretch */
+  background-position: center;
+  /* center alignment */
+  background-repeat: no-repeat;
+  /* no repeat */
+  color: rgb(11, 11, 11);
+  /* text color upar visible */
+  /* padding: 20px; */
+  /* background-attachment: fixed; */
+  height: auto;
+  max-width: 100%;
+
+}
+
+.img-jalsa{
+  background:
+    url("../images/many\ chairs.jpg ");
+  /* background image */
+  background-size: cover;
+  /* image stretch */
+  background-position: center;
+  /* center alignment */
+  background-repeat: no-repeat;
+  /* no repeat */
+  color: rgb(11, 11, 11);
+  /* text color upar visible */
+  /* padding: 20px; */
+  /* background-attachment: fixed; */
+  height: auto;
+  max-width: 100%;
+}
+.img-jashn{
+  background:
+    url("../images/jashn.jpg ");
+  /* background image */
+  background-size: cover;
+  /* image stretch */
+  background-position: center;
+  /* center alignment */
+  background-repeat: no-repeat;
+  /* no repeat */
+  color: rgb(11, 11, 11);
+  /* text color upar visible */
+  /* padding: 20px; */
+  /* background-attachment: fixed; */
+  height: auto;
+  max-width: 100%;
+}
+.img-lawn{
+  background:
+    url("../images/the\ lawn.jpg");
+  /* background image */
+  background-size: cover;
+  /* image stretch */
+  background-position: center;
+  /* center alignment */
+  background-repeat: no-repeat;
+  /* no repeat */
+  color: rgb(11, 11, 11);
+  /* text color upar visible */
+  /* padding: 20px; */
+  /* background-attachment: fixed; */
+  height: auto;
+  max-width: 100%;
+}

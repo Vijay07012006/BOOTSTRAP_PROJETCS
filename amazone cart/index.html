@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Amazon Cart - Advanced</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f2f2f2;
+    }
+    header {
+      background-color: #232f3e;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      margin: 0;
+    }
+    #cart {
+      cursor: pointer;
+      position: relative;
+    }
+    #cart-count {
+      background: red;
+      color: white;
+      border-radius: 50%;
+      padding: 2px 6px;
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      font-size: 12px;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 30px;
+    }
+    .product {
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .product img {
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+    .product h3 {
+      font-size: 18px;
+      margin: 10px 0 5px;
+    }
+    .product p {
+      margin: 5px 0;
+    }
+    .product button {
+      padding: 8px 12px;
+      border: none;
+      background: #ff9900;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+    .cart-modal {
+      position: fixed;
+      right: 20px;
+      top: 70px;
+      background: white;
+      width: 300px;
+      max-height: 400px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      display: none;
+      z-index: 999;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+    .cart-item span {
+      font-size: 14px;
+    }
+    .cart-item button {
+      background: red;
+      color: white;
+      border: none;
+      padding: 2px 6px;
+      font-size: 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .total {
+      padding: 10px;
+      font-weight: bold;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Amazon Cart</h1>
+  <div id="cart" onclick="toggleCart()">
+    🛒 Cart <span id="cart-count">0</span>
+  </div>
+</header>
+
+<div class="products" id="product-list"></div>
+
+<div class="cart-modal" id="cart-modal">
+  <div id="cart-items"></div>
+  <div class="total" id="cart-total">Total: ₹0</div>
+</div>
+
+<script>
+  const products = [
+    { name: "Wireless Mouse", price: 499, img: "https://m.media-amazon.com/images/I/61LtuGzXeaL._SX522_.jpg" },
+    { name: "Bluetooth Headphones", price: 1599, img: "https://m.media-amazon.com/images/I/61ePp3k6X-L._SX679_.jpg" },
+    { name: "Smartwatch", price: 2499, img: "https://m.media-amazon.com/images/I/71X9-Dfb9zL._SX679_.jpg" },
+    { name: "USB-C Charger", price: 799, img: "https://m.media-amazon.com/images/I/61pJ4H6uNbL._SX679_.jpg" },
+    { name: "Gaming Keyboard", price: 1399, img: "https://m.media-amazon.com/images/I/71s1LRpaprL._SX679_.jpg" },
+    { name: "LED Monitor", price: 7499, img: "https://m.media-amazon.com/images/I/81QpkIctqPL._SX679_.jpg" },
+    { name: "Portable Speaker", price: 1099, img: "https://m.media-amazon.com/images/I/61MWSi8eM2L._SX679_.jpg" },
+    { name: "Power Bank", price: 1299, img: "https://m.media-amazon.com/images/I/61PJcQRYiDL._SX679_.jpg" },
+    { name: "Smartphone", price: 13999, img: "https://m.media-amazon.com/images/I/71dEY4Neo3L._SX679_.jpg" },
+    { name: "Iphone 16 pro max", price: 42999, img: "https://m.media-amazon.com/images/I/71MHTD3uL4L._SX679_.jpg" },
+    { name: "TV 43\"", price: 24999, img: "https://m.media-amazon.com/images/I/71Uxb0RkNvL._SX679_.jpg" },
+    { name: "Echo Dot", price: 2999, img: "https://m.media-amazon.com/images/I/61mbLLagiVL._SX679_.jpg" },
+    { name: "Alexa Smart Plug", price: 799, img: "https://m.media-amazon.com/images/I/51Tzi+Jh2bL._SX679_.jpg" },
+    { name: "Air Conditioner", price: 30999, img: "https://m.media-amazon.com/images/I/71FV5JtU6ZL._SX679_.jpg" },
+    { name: "Fan Heater", price: 2299, img: "https://m.media-amazon.com/images/I/71+chP9dWjL._SX679_.jpg" },
+    { name: "DSLR Camera", price: 45999, img: "https://m.media-amazon.com/images/I/71WU8ZkzM8L._SX679_.jpg" },
+    { name: "Tripod Stand", price: 499, img: "https://m.media-amazon.com/images/I/61L2PZKXJ-L._SX679_.jpg" },
+    { name: "Gaming Chair", price: 11999, img: "https://m.media-amazon.com/images/I/61xLtD-AuoL._SX679_.jpg" },
+    { name: "Office Desk", price: 7499, img: "https://m.media-amazon.com/images/I/81bK-oVxJIL._SX679_.jpg" },
+    { name: "Ergonomic Mousepad", price: 299, img: "https://m.media-amazon.com/images/I/71B5uDkWcBL._SX679_.jpg" },
+    { name: "Ergonomic Mousepad", price: 299, img: "https://m.media-amazon.com/images/I/71B5uDkWcBL._SX679_.jpg" },
+  ];
+
+  let cart = [];
+
+  function renderProducts() {
+    const list = document.getElementById("product-list");
+    products.forEach((p, i) => {
+      const card = document.createElement("div");
+      card.className = "product";
+      card.innerHTML = `
+        <img src="${p.img}" alt="${p.name}" onerror="this.src='https://via.placeholder.com/150'"/>
+        <h3>${p.name}</h3>
+        <p>₹${p.price}</p>
+        <button onclick="addToCart(${i})">Add to Cart</button>
+      `;
+      list.appendChild(card);
+    });
+  }
+
+  function addToCart(index) {
+    cart.push(products[index]);
+    updateCart();
+  }
+
+  function updateCart() {
+    const cartItems = document.getElementById("cart-items");
+    const totalEl = document.getElementById("cart-total");
+    cartItems.innerHTML = "";
+    let total = 0;
+    cart.forEach((item, i) => {
+      total += item.price;
+      cartItems.innerHTML += `
+        <div class="cart-item">
+          <span>${item.name} - ₹${item.price}</span>
+          <button onclick="removeFromCart(${i})">X</button>
+        </div>
+      `;
+    });
+    totalEl.textContent = `Total: ₹${total}`;
+    document.getElementById("cart-count").textContent = cart.length;
+  }
+
+  function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCart();
+  }
+
+  function toggleCart() {
+    const modal = document.getElementById("cart-modal");
+    modal.style.display = modal.style.display === "block" ? "none" : "block";
+  }
+
+  renderProducts();
+</script>
+</body>
+</html>

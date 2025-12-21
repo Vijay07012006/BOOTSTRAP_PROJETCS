@@ -1,0 +1,9 @@
+
+#Register-form:hover{
+    box-shadow: 0px 0px 10px 5px grey;
+    transform: translateY(-10px);
+ }
+ #Register-form{
+    transition: 0.5s all; 
+    border-radius: 10px;
+ }

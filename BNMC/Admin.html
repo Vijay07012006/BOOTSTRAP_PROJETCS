@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="images/logo1.png" type="image/icon type">
+    <link rel="stylesheet" href="CSS/bootstrap.css">
+
+</head>
+
+<body>
+    <div class="container-fluid">
+
+
+
+        <!-- login form start -->
+        <div class="row my-5">
+
+            <div class="col-sm-3 mx-auto border border-2 border-primary rounded-3 p-4 py-5 mt-5" id="login-form">
+                <div class="row">
+                    <div class="col-sm-4 mx-auto ">
+                        <img src="./images/logo1.png" alt="" class="img-fluid rounded-3 h-100 w-100">
+                    </div>
+                    <i class="text-center fs-6 pb-4 fw-bold">
+                       admin panel 
+                    </i>
+                    <h5 class="fw-semibold">Welcome to Admin Panel! 👋</h5>
+                    <p style="font-size: 13px;">Please sign-in to your account !</p>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        
+                        <form >
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">EMAIL</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your email"
+                                    aria-describedby="emailHelp">
+
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">PASSWORD</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="*********">
+                            </div>
+
+
+                            <a href="home.html"
+                                class="btn btn-custom text-light btn-primary float-end me-5 px-4 mx-auto"
+                                onclick="submit()">Submit</a>
+                            <div class="row">
+                               <div class="col-sm-12 mt-2">
+                                 <a href="home.html"
+                                class=" text-primary text-decoration-none ms-5 mx-auto">> Back to home
+                            </a>
+                               </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- login form end -->
+
+    </div>
+    <script src="JS/bootstrap.bundle.js"></script>
+</body>
+
+</html>

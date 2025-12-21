@@ -1,0 +1,10 @@
+body{
+    background-color: rgb(33, 33, 33);
+}
+.signin{
+    transition: 0.2s ease-in-out;
+}
+.signin:hover{
+    background-color: rgb(44, 44, 44);
+    border-radius: 15px;
+}

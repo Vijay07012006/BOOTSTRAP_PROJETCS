@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dragon Runner Advanced</title>
+    <link rel="stylesheet" href="CSS/bootstrap.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #0b1020;
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 900px;
+        }
+
+        h1 {
+            font-weight: bold;
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.8);
+        }
+
+        .subtitle {
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+
+        .box {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            border: 2px solid #00e5ff;
+            margin-top: 20px;
+            overflow: hidden;
+            background: linear-gradient(#1c2541 0%, #1b262c 55%, #0f4c5c 55%);
+        }
+
+        /* Sky effects */
+        .sun {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #ffe066, #ff9f1c);
+            box-shadow: 0 0 25px rgba(255, 239, 130, 0.9);
+        }
+
+        .cloud {
+            position: absolute;
+            top: 40px;
+            left: -150px;
+            width: 120px;
+            height: 40px;
+            background: #f1f1f1;
+            border-radius: 20px;
+            box-shadow: 30px 5px 0 #f1f1f1, 60px 10px 0 #f1f1f1;
+            opacity: 0.8;
+            animation: moveCloud 14s linear infinite;
+        }
+
+        .cloud.cloud-2 {
+            top: 80px;
+            animation-duration: 18s;
+            animation-delay: -4s;
+            transform: scale(0.8);
+        }
+
+        @keyframes moveCloud {
+            0% {
+                left: -200px;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        /* Ground + decorations */
+        .ground-line {
+            position: absolute;
+            bottom: 50px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: #c0c0c0;
+        }
+
+        .ground-detail {
+            position: absolute;
+            bottom: 50px;
+            width: 40px;
+            height: 15px;
+            background-color: #2f4f4f;
+            border-radius: 4px;
+            opacity: 0.7;
+            animation: moveGround 2.5s linear infinite;
+        }
+
+        .ground-detail:nth-child(1) {
+            left: 10%;
+        }
+
+        .ground-detail:nth-child(2) {
+            left: 40%;
+            animation-delay: -1s;
+        }
+
+        .ground-detail:nth-child(3) {
+            left: 70%;
+            animation-delay: -2s;
+        }
+
+        @keyframes moveGround {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-120%);
+            }
+        }
+
+        /* Dragon character */
+        .dragon {
+            position: absolute;
+            bottom: 54px;
+            left: 70px;
+            width: 80px;
+            height: 80px;
+            background-image: url('images/dragon.png');
+            background-size: cover;
+            background-position: center;
+            filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.8));
+        }
+
+        /* Jump animation */
+        .jump {
+            animation: jump 0.55s ease-out;
+        }
+
+        @keyframes jump {
+            0% {
+                bottom: 54px;
+            }
+
+            35% {
+                bottom: 160px;
+            }
+
+            65% {
+                bottom: 160px;
+            }
+
+            100% {
+                bottom: 54px;
+            }
+        }
+
+        /* Obstacle */
+        .obstacle {
+            position: absolute;
+            bottom: 54px;
+            right: -60px;
+            width: 40px;
+            height: 60px;
+            background: linear-gradient(#ff4b5c, #d72323);
+            border-radius: 10px 10px 4px 4px;
+            box-shadow: 0 0 12px rgba(255, 0, 80, 0.8);
+        }
+
+        .obstacle::after {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: 8px;
+            width: 24px;
+            height: 12px;
+            background: #ffb3c1;
+            border-radius: 6px 6px 0 0;
+        }
+
+        .move-obstacle {
+            animation: moveObstacle 1.6s linear infinite;
+        }
+
+        @keyframes moveObstacle {
+            0% {
+                right: -60px;
+            }
+
+            100% {
+                right: 100%;
+            }
+        }
+
+        /* Floating collectible (coin) */
+        .coin {
+            position: absolute;
+            bottom: 130px;
+            right: -40px;
+            width: 26px;
+            height: 26px;
+            background: radial-gradient(circle, #ffe066, #f4a261);
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(255, 222, 89, 0.9);
+            display: none;
+        }
+
+        .move-coin {
+            display: block;
+            animation: moveCoin 1.6s linear infinite;
+        }
+
+        @keyframes moveCoin {
+            0% {
+                right: -40px;
+            }
+
+            100% {
+                right: 100%;
+            }
+        }
+
+        /* Info / Score UI */
+        .info {
+            margin-top: 12px;
+            font-size: 17px;
+        }
+
+        #score,
+        #highScore {
+            font-weight: bold;
+        }
+
+        .game-over {
+            color: #ff6b6b;
+            font-weight: bold;
+            margin-top: 10px;
+            min-height: 22px;
+        }
+
+        .status-text {
+            margin-top: 6px;
+            font-size: 14px;
+            opacity: 0.85;
+        }
+
+        .btn-main {
+            margin-top: 10px;
+            padding: 6px 16px;
+            border-radius: 20px;
+            border: 1px solid #00e5ff;
+            background: transparent;
+            color: #00e5ff;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .btn-main:hover {
+            background: #00e5ff;
+            color: #000;
+            box-shadow: 0 0 10px rgba(0, 229, 255, 0.8);
+        }
+
+        .paused-label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 13px;
+            padding: 3px 10px;
+            border-radius: 12px;
+            border: 1px solid #00e5ff;
+            background: rgba(0, 0, 0, 0.35);
+            display: none;
+        }
+
+        .paused-label.show {
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container text-center mt-5">
+        <h1>Dragon Runner Advanced</h1>
+        <p class="subtitle">Press <b>Enter</b> to Start / Restart • Use <b>Space</b> or <b>Arrow Up</b> to Jump</p>
+
+        <div class="row">
+            <div class="col-12 mx-auto">
+                <div class="box" id="gameBox">
+                    <div class="sun"></div>
+                    <div class="cloud"></div>
+                    <div class="cloud cloud-2"></div>
+
+                    <div class="ground-line"></div>
+                    <!-- Moving ground decoration -->
+                    <div class="ground-detail"></div>
+                    <div class="ground-detail"></div>
+                    <div class="ground-detail"></div>
+
+                    <div class="dragon" id="dragon"></div>
+                    <div class="obstacle" id="obstacle"></div>
+                    <div class="coin" id="coin"></div>
+
+                    <div class="paused-label" id="pauseLabel">PAUSED (Press P)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="info">
+            <span id="score">Score: 0</span> |
+            <span id="highScore">High Score: 0</span>
+            <div id="message" class="game-over"></div>
+            <div class="status-text" id="statusText">
+                Press <b>Enter</b> to begin the run!
+            </div>
+            <button class="btn-main" id="startBtn">Start / Restart (Enter)</button>
+        </div>
+    </div>
+
+    <!-- Optional sounds -->
+    <audio id="jumpSound" src="sounds/jump.mp3"></audio>
+    <audio id="hitSound" src="sounds/hit.mp3"></audio>
+
+    <script src="JS/bootstrap.js"></script>
+
+    <script>
+        const dragon = document.getElementById("dragon");
+        const obstacle = document.getElementById("obstacle");
+        const coin = document.getElementById("coin");
+        const scoreEl = document.getElementById("score");
+        const highScoreEl = document.getElementById("highScore");
+        const messageEl = document.getElementById("message");
+        const statusTextEl = document.getElementById("statusText");
+        const startBtn = document.getElementById("startBtn");
+        const pauseLabel = document.getElementById("pauseLabel");
+
+        const jumpSound = document.getElementById("jumpSound");
+        const hitSound = document.getElementById("hitSound");
+
+        let isJumping = false;
+        let isGameOver = false;
+        let isStarted = false;
+        let isPaused = false;
+
+        let score = 0;
+        let highScore = 0;
+        let speedLevel = 1;
+
+        // Default obstacle animation duration (lower = faster)
+        let obstacleDuration = 1.6;
+
+        // Jump function
+        function jump() {
+            if (!isStarted || isGameOver || isPaused) return;
+            if (isJumping) return;
+
+            isJumping = true;
+            dragon.classList.add("jump");
+
+            // Play jump sound (agar file hai to chalega, nahi to error ignore)
+            if (jumpSound) {
+                try {
+                    jumpSound.currentTime = 0;
+                    jumpSound.play();
+                } catch (e) { }
+            }
+
+            setTimeout(() => {
+                dragon.classList.remove("jump");
+                isJumping = false;
+            }, 550);
+        }
+
+        // Start / Restart game
+        function startGame() {
+            // Reset state
+            isGameOver = false;
+            isStarted = true;
+            isPaused = false;
+            score = 0;
+            speedLevel = 1;
+            obstacleDuration = 1.6;
+
+            messageEl.textContent = "";
+            statusTextEl.textContent = "Run started! Jump over obstacles & grab coins!";
+            pauseLabel.classList.remove("show");
+
+            // Reset dragon position (just in case)
+            dragon.style.bottom = "54px";
+
+            // Reset animations
+            obstacle.style.animation = "none";
+            coin.style.animation = "none";
+            coin.classList.remove("move-coin");
+
+            void obstacle.offsetWidth; // reflow hack to restart animation
+
+            obstacle.style.animation = `moveObstacle ${obstacleDuration}s linear infinite`;
+            obstacle.classList.add("move-obstacle");
+
+            // Coin random appearance after short delay
+            scheduleCoin();
+        }
+
+        // Pause / resume
+        function togglePause() {
+            if (!isStarted || isGameOver) return;
+
+            isPaused = !isPaused;
+
+            if (isPaused) {
+                // Freeze CSS animations by setting animationPlayState = paused
+                obstacle.style.animationPlayState = "paused";
+                coin.style.animationPlayState = "paused";
+                pauseLabel.classList.add("show");
+                statusTextEl.textContent = "Game paused. Press P to resume.";
+            } else {
+                obstacle.style.animationPlayState = "running";
+                coin.style.animationPlayState = "running";
+                pauseLabel.classList.remove("show");
+                statusTextEl.textContent = "Game resumed!";
+            }
+        }
+
+        // Coin spawn logic
+        function scheduleCoin() {
+            if (isGameOver) return;
+
+            // Random delay 1–4 seconds
+            const delay = Math.floor(Math.random() * 3000) + 1000;
+            setTimeout(() => {
+                if (isGameOver || !isStarted) return;
+
+                // Random height a little bit
+                const randomBottom = 120 + Math.floor(Math.random() * 40);
+                coin.style.bottom = randomBottom + "px";
+
+                // Restart coin animation
+                coin.style.animation = "none";
+                void coin.offsetWidth;
+                coin.classList.add("move-coin");
+                coin.style.animation = `moveCoin ${obstacleDuration}s linear infinite`;
+
+                // Next coin schedule
+                scheduleCoin();
+            }, delay);
+        }
+
+        // Keyboard controls
+        document.addEventListener("keydown", (e) => {
+            if (e.code === "Space" || e.code === "ArrowUp") {
+                e.preventDefault();
+                jump();
+            } else if (e.code === "Enter") {
+                startGame();
+            } else if (e.code === "KeyP") {
+                togglePause();
+            }
+        });
+
+        // Button start
+        startBtn.addEventListener("click", startGame);
+
+        // Score & speed increment
+        const scoreInterval = setInterval(() => {
+            if (!isStarted || isGameOver || isPaused) return;
+
+            score++;
+            scoreEl.textContent = "Score: " + score;
+
+            // High score update
+            if (score > highScore) {
+                highScore = score;
+                highScoreEl.textContent = "High Score: " + highScore;
+            }
+
+            // Speed level increase har 80 score par
+            if (score % 80 === 0) {
+                speedLevel++;
+                // Har level par thoda fast
+                obstacleDuration = Math.max(0.9, obstacleDuration - 0.12);
+
+                // Reapply obstacle animation with new duration
+                obstacle.style.animation = "none";
+                void obstacle.offsetWidth;
+                obstacle.style.animation = `moveObstacle ${obstacleDuration}s linear infinite`;
+
+                // Coin bhi fast ho
+                coin.style.animation = "none";
+                void coin.offsetWidth;
+                if (coin.classList.contains("move-coin")) {
+                    coin.style.animation = `moveCoin ${obstacleDuration}s linear infinite`;
+                }
+
+                statusTextEl.textContent = `Speed Up! Level ${speedLevel}`;
+            }
+        }, 150);
+
+        // Collision detection
+        const collisionInterval = setInterval(() => {
+            if (!isStarted || isGameOver || isPaused) return;
+
+            const dragonRect = dragon.getBoundingClientRect();
+            const obstacleRect = obstacle.getBoundingClientRect();
+            const coinRect = coin.getBoundingClientRect();
+
+            // Obstacle collision
+            const overlapXObstacle =
+                obstacleRect.left < dragonRect.right - 10 &&
+                obstacleRect.right > dragonRect.left + 10;
+            const overlapYObstacle =
+                obstacleRect.bottom > dragonRect.top + 10 &&
+                obstacleRect.top < dragonRect.bottom - 10;
+
+            if (overlapXObstacle && overlapYObstacle) {
+                gameOver();
+                return;
+            }
+
+            // Coin collision (bonus score)
+            if (coin.classList.contains("move-coin")) {
+                const overlapXCoin =
+                    coinRect.left < dragonRect.right - 10 &&
+                    coinRect.right > dragonRect.left + 10;
+                const overlapYCoin =
+                    coinRect.bottom > dragonRect.top + 10 &&
+                    coinRect.top < dragonRect.bottom - 10;
+
+                if (overlapXCoin && overlapYCoin) {
+                    // hide coin & give bonus
+                    coin.classList.remove("move-coin");
+                    coin.style.animation = "none";
+
+                    score += 25;
+                    scoreEl.textContent = "Score: " + score;
+                    statusTextEl.textContent = "Nice! +25 bonus coin!";
+                }
+            }
+        }, 25);
+
+        // Game Over
+        function gameOver() {
+            isGameOver = true;
+            isStarted = false;
+
+            // Stop obstacle & coin
+            obstacle.style.animation = "none";
+            coin.style.animation = "none";
+            coin.classList.remove("move-coin");
+
+            // Hit sound
+            if (hitSound) {
+                try {
+                    hitSound.currentTime = 0;
+                    hitSound.play();
+                } catch (e) { }
+            }
+
+            messageEl.textContent = `Game Over! Final Score: ${score}`;
+            statusTextEl.textContent = "Press Enter or click Start to play again.";
+            pauseLabel.classList.remove("show");
+        }
+    </script>
+</body>
+
+</html>

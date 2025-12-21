@@ -1,0 +1,6 @@
+Browser--> collection of website is called website.
+search engine
+isp
+Server--> server is a computer which is used to perform the particular task.
+window.location.href='https://www.google.com'
+XSS

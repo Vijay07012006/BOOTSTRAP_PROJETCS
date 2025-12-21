@@ -1,0 +1,50 @@
+*{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 17px;
+}
+.bg-img{
+    background-image: url("../images/shadi-banner-june-2025.jpg");
+    height: 77vh;
+    width: 100vw;
+    background-repeat: no-repeat;
+    /* background-position:calc();   */
+    background-size: cover;
+    
+}
+.login{
+    /* position:absolute;
+    left: 66%; */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
+    font-weight: 1000;
+    z-index: 10;
+}
+.signup{
+    /* position:absolute;
+    left: 72%; */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
+    font-weight: 1000;
+    z-index: 10;
+}
+.RELIGION{
+    transition: 0.1s ease-in-out;
+}
+.RELIGION:hover{
+    color: maroon;
+}
+.Relationship_Advise{
+    transition: 0.1s ease-in-out;
+}
+.Relationship_Advise:hover{
+    border:2px solid maroon;
+    border-radius: 5px;
+}
+.HOVER-NAV{
+    transition: 0.2s ease-in-out;
+}
+.HOVER-NAV:hover{
+    background-color: rgb(129, 129, 129);
+    border-bottom: solid maroon;
+    border-collapse: collapse;
+}
